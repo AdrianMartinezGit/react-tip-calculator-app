@@ -3,8 +3,6 @@ import Image from 'next/image';
 
 export default function Home() {
   return (
-    <main className='flex items-center flex justify-center'>
-    <Image src={logo} alt='Logo'/>
-    </main>
+    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>Hello world</div>
   );
 }
