@@ -14,16 +14,16 @@ export default function Home() {
   const [tipAmount, setTipAmount] = useState<string>('$0.00');
   const [total, setTotal] = useState<string>('$0.00');
 
-  const handleBills = () => {
-
+  const handleBills = (e: any) => {
+    e.preventDefault();
   }
 
   const handleTips = () => {
 
   }
 
-  const handlePeople = () => {
-
+  const handlePeople = (e: any) => {
+    e.preventDefault();
   }
 
   const handleTipAmount = () => {
@@ -31,7 +31,7 @@ export default function Home() {
   }
 
   const handleTotalAmount = () => {
-    
+
   }
 
   const handleReset = () => {
@@ -53,9 +53,9 @@ export default function Home() {
                 <div className='max-sm:flex max-sm:flex-col max-sm:space-y-8 sm:grid sm:grid-rows-3 sm:gap-4 h-full'>
                   <div className='flex flex-col space-y-2'>
                     <p className='space-mono-bold text-[#5e7a7d]'>Bill</p>
-                    <form>
+                    <form onSubmit={handleBills}>
                       <Image src={Dollar} alt='Dollar Sign' className='absolute ml-2 mt-3'/>
-                      <input type='number' className='bg-[#f4fafa] w-full h-10 text-right px-2 appearance-none space-mono-bold text-2xl text-[#00494d] focus:outline-[#26c0ab]' placeholder='0'/>
+                      <input type='number' className='bg-[#f4fafa] w-full h-10 text-right px-2 appearance-none space-mono-bold text-2xl text-[#00494d] focus:outline-[#26c0ab]' placeholder='0' min={0}/>
                     </form>
                   </div>
                   <div className='flex flex-col space-y-2'>
@@ -72,9 +72,9 @@ export default function Home() {
                   <div className='flex items-end'>
                     <div className='w-full flex flex-col space-y-2'>
                       <p className='space-mono-bold text-[#5e7a7d]'>Number of People</p>
-                      <form>
+                      <form onSubmit={handlePeople}>
                         <Image src={Person} alt='Person Icon' className='absolute ml-2 mt-3'/>
-                        <input type='number' className='bg-[#f4fafa] w-full h-10 text-right px-2 appearance-none space-mono-bold text-2xl text-[#00494d] focus:outline-[#26c0ab]' placeholder='0'/>
+                        <input type='number' className='bg-[#f4fafa] w-full h-10 text-right px-2 appearance-none space-mono-bold text-2xl text-[#00494d] focus:outline-[#26c0ab]' min={0} placeholder='0'/>
                       </form>
                     </div>
                   </div>
