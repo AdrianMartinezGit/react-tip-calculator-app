@@ -1,10 +1,42 @@
+'use client';
+
 import Logo from '@/assets/logo.svg';
 import Image from 'next/image';
 import Dollar from '@/assets/icon-dollar.svg';
 import Person from '@/assets/icon-person.svg'
+import { useState } from 'react';
 
 export default function Home() {
+  const [billValue, setBillValue] = useState<number>(0);
+  const [tipValue, setTipValue] = useState<number>(0);
+  const [peopleValue, setPeopleValue] = useState<number>(0);
 
+  const [tipAmount, setTipAmount] = useState<string>('$0.00');
+  const [total, setTotal] = useState<string>('$0.00');
+
+  const handleBills = () => {
+
+  }
+
+  const handleTips = () => {
+
+  }
+
+  const handlePeople = () => {
+
+  }
+
+  const handleTipAmount = () => {
+
+  }
+
+  const handleTotalAmount = () => {
+    
+  }
+
+  const handleReset = () => {
+
+  }
   
   return (
     <>
@@ -56,7 +88,7 @@ export default function Home() {
                       <p className='space-mono-regular text-[#7f9c9f]'>/ person</p>
                     </div>
                     <div>
-                      <p className='text-right text-5xl space-mono-bold text-[#26c0ab]'>$0.00</p>
+                      <p className='text-right text-5xl space-mono-bold text-[#26c0ab]'>{tipAmount}</p>
                     </div>
                   </div>
                   <div className='grid grid-cols-2'>
@@ -65,7 +97,7 @@ export default function Home() {
                       <p className='space-mono-regular text-[#7f9c9f]'>/ person</p>
                     </div>
                     <div>
-                      <p className='text-right text-5xl space-mono-bold text-[#26c0ab]'>$0.00</p>
+                      <p className='text-right text-5xl space-mono-bold text-[#26c0ab]'>{total}</p>
                     </div>
                   </div>
                   <div className='flex items-end'>
