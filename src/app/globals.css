@@ -4,18 +4,6 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
-
-body {
-  background-color: hsl(185, 41%, 84%);
-  min-height: 100vh;
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-}
-
 .space-mono-regular {
   font-family: "Space Mono", monospace;
   font-weight: 400;
@@ -38,6 +26,17 @@ body {
   font-family: "Space Mono", monospace;
   font-weight: 700;
   font-style: italic;
+}
+
+body {
+  background-color: #c5e4e7;
+  min-height: 100vh;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
 }
 
 .tip-container {
