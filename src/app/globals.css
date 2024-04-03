@@ -7,6 +7,7 @@
 
 body {
   background-color: hsl(185, 41%, 84%);
+  min-height: 100vh;
 }
 
 @layer utilities {
@@ -37,4 +38,30 @@ body {
   font-family: "Space Mono", monospace;
   font-weight: 700;
   font-style: italic;
+}
+
+.tip-container {
+  width: 960px;
+  height: 500px;
+  background-color: white;
+  border-radius: 25px;
+  padding: 30px;
+}
+
+.tip-outside {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+input[type=number] {
+    -moz-appearance:textfield; /* Firefox */
 }
