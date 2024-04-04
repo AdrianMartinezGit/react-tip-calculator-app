@@ -63,7 +63,7 @@ export default function MainComponent() {
     }
 
     const handleTipsClick = (e: any) => {
-        const newValue: number = Number.parseInt(e.currentTarget.textContent) / 100;
+        const newValue: number = Number.parseFloat(e.currentTarget.textContent) / 100;
         setTipValue(newValue);
 
         calculateTip(billValue, newValue, peopleValue);
@@ -72,7 +72,7 @@ export default function MainComponent() {
     const calculateTip = (bill = billValue, tip = tipValue, people = peopleValue) => {
         if (people >= 1) {
             let amount: number = (bill * tip) / people;
-            let total: number = (bill * amount) / people;
+            let total: number = (amount * people + bill) / people;
 
             setTipAmount('$' + amount.toFixed(2));
             setTotal('$' + total.toFixed(2));
