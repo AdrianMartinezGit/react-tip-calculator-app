@@ -94,7 +94,7 @@ export default function Home() {
                   <div className='flex flex-col space-y-2'>
                     <div className='grid grid-cols-2'>
                       <p className='space-mono-bold text-[#5e7a7d] text-left'>Bill ({billValue})</p>
-                      <p className={`space-mono-bold text-red-600 text-right ${billClass[0]}`}>Can't be zero</p>
+                      <p className={`space-mono-bold text-red-600 text-right ${billClass[0]}`}>Cant be zero</p>
                     </div>
                     <form onSubmit={handleSubmit}>
                       <Image src={Dollar} alt='Dollar Sign' className='absolute ml-2 mt-3' />
@@ -118,7 +118,7 @@ export default function Home() {
                     <div className='w-full flex flex-col space-y-2'>
                       <div className='grid grid-cols-2'>
                         <p className='space-mono-bold text-[#5e7a7d] text-left'>Number of People ({peopleValue})</p>
-                        <p className={`space-mono-bold text-red-600 text-right ${peopleClass[0]}`}>Can't be zero</p>
+                        <p className={`space-mono-bold text-red-600 text-right ${peopleClass[0]}`}>Cant be zero</p>
                       </div>
                       <form onSubmit={handleSubmit}>
                         <Image src={Person} alt='Person Icon' className='absolute ml-2 mt-3' />
