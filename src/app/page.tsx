@@ -4,7 +4,7 @@ import Logo from '@/assets/logo.svg';
 import Image from 'next/image';
 import Dollar from '@/assets/icon-dollar.svg';
 import Person from '@/assets/icon-person.svg'
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 
 export default function Home() {
   const [billValue, setBillValue] = useState<number>(0);
@@ -70,8 +70,8 @@ export default function Home() {
 
   const calculateTip = (bill = billValue, tip = tipValue, people = peopleValue) => {
     if (people >= 1) {
-      let amount = (bill * tip) / people;
-      let total = (bill * amount) / people;
+      let amount: number = (bill * tip) / people;
+      let total: number = (bill * amount) / people;
 
       setTipAmount('$' + amount.toFixed(2));
       setTotal('$' + total.toFixed(2));
