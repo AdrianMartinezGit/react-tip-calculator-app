@@ -4,7 +4,7 @@ import Logo from '@/assets/logo.svg';
 import Image from 'next/image';
 import Dollar from '@/assets/icon-dollar.svg';
 import Person from '@/assets/icon-person.svg'
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 
 export default function Home() {
   const [billValue, setBillValue] = useState<number>(0);
@@ -18,7 +18,7 @@ export default function Home() {
   const [peopleClass, setPeopleClass] = useState<string[]>(['hidden', '#26c0ab']);
 
   const handleBills = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newValue: number = Number(e.currentTarget.value); 
+    const newValue: number = Number(e.currentTarget.value);
 
     setBillClass(['hidden', '#26c0ab']);
 
@@ -27,13 +27,15 @@ export default function Home() {
     }
 
     setBillValue(newValue);
-    calculateTip();
+
+    calculateTip(newValue);
   }
 
   const handleTips = (e: React.ChangeEvent<HTMLInputElement>) => {
-    let newValue: number = Number(e.currentTarget.value);
-    setTipValue(newValue / 100);
-    calculateTip();
+    let newValue: number = Number(e.currentTarget.value) / 100;
+    setTipValue(newValue);
+
+    calculateTip(billValue, newValue);
   }
 
   const handlePeople = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -46,33 +48,36 @@ export default function Home() {
     }
 
     setPeopleValue(newValue);
+
+    calculateTip(billValue, tipValue, newValue);
+  }
+
+  const handleReset = () => {
+    window.location.reload();
+  }
+
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
     calculateTip();
   }
 
-  const calculateTip = () => {
-    if (peopleValue >= 1) {
-      let amount = (billValue * tipValue) / peopleValue;
-      let total = (billValue * amount) / peopleValue;
-      
+  const handleTipsClick = (e: any) => {
+    const newValue: number = Number.parseInt(e.currentTarget.textContent) / 100;
+    setTipValue(newValue);
+    
+    calculateTip(billValue, newValue, peopleValue);
+  }
+
+  const calculateTip = (bill = billValue, tip = tipValue, people = peopleValue) => {
+    if (people >= 1) {
+      let amount = (bill * tip) / people;
+      let total = (bill * amount) / people;
+
       setTipAmount('$' + amount.toFixed(2));
       setTotal('$' + total.toFixed(2));
     }
   }
 
-  const handleReset = () => {
-    setBillValue(0);
-    setTipValue(0);
-    setPeopleValue(0);
-    setTipAmount('$0.00');
-    setTotal('$0.00');
-  }
-
-  const handleTipsClick = (e: any) => {
-    const newValue: number = Number.parseInt(e.currentTarget.textContent);
-    setTipValue(newValue / 100);
-    calculateTip();
-  }
-  
   return (
     <>
       <div className='flex justify-center'>
@@ -91,10 +96,10 @@ export default function Home() {
                       <p className='space-mono-bold text-[#5e7a7d] text-left'>Bill ({billValue})</p>
                       <p className={`space-mono-bold text-red-600 text-right ${billClass[0]}`}>Can't be zero</p>
                     </div>
-                    <div>
-                      <Image src={Dollar} alt='Dollar Sign' className='absolute ml-2 mt-3'/>
-                      <input type='number' className={`bg-[#f4fafa] w-full h-10 text-right px-2 appearance-none space-mono-bold text-2xl text-[#00494d] focus:outline-[${billClass[1]}]`} placeholder='0' min={0} max={100} onChange={(e) => handleBills(e)} required/>
-                    </div>
+                    <form onSubmit={handleSubmit}>
+                      <Image src={Dollar} alt='Dollar Sign' className='absolute ml-2 mt-3' />
+                      <input type='number' className={`bg-[#f4fafa] w-full h-10 text-right px-2 appearance-none space-mono-bold text-2xl text-[#00494d] focus:outline-[${billClass[1]}]`} placeholder='0' min={0} onChange={(e) => handleBills(e)} required />
+                    </form>
                   </div>
                   <div className='flex flex-col space-y-2'>
                     <p className='space-mono-bold text-[#5e7a7d]'>Select Tip % ({tipValue})</p>
@@ -104,19 +109,21 @@ export default function Home() {
                       <button className='bg-[#00494d] text-white space-mono-regular text-2xl h-14 rounded-md hover:text-[#00494d] hover:bg-[#26c0ab] active:bg-[#c5e4e7]' onClick={handleTipsClick}>15%</button>
                       <button className='bg-[#00494d] text-white space-mono-regular text-2xl h-14 rounded-md hover:text-[#00494d] hover:bg-[#26c0ab] active:bg-[#c5e4e7]' onClick={handleTipsClick}>25%</button>
                       <button className='bg-[#00494d] text-white space-mono-regular text-2xl h-14 rounded-md hover:text-[#00494d] hover:bg-[#26c0ab] active:bg-[#c5e4e7]' onClick={handleTipsClick}>50%</button>
-                      <input type='number' placeholder='Custom' className='bg-[#f4fafa] text-right px-2 space-mono-bold text-[#00494d] text-2xl h-14 rounded-md placeholder-shown:text-center placeholder:text-[#5e7a7d] focus:outline-[#26c0ab]' min={0} max={100} onChange={(e) => handleTips(e)}/>
+                      <form onSubmit={handleSubmit}>
+                        <input type='number' placeholder='Custom' className='w-full bg-[#f4fafa] text-right px-2 space-mono-bold text-[#00494d] text-2xl h-14 rounded-md placeholder-shown:text-center placeholder:text-[#5e7a7d] focus:outline-[#26c0ab]' min={0} max={100} onChange={(e) => handleTips(e)} />
+                      </form>
                     </div>
                   </div>
                   <div className='flex items-end'>
                     <div className='w-full flex flex-col space-y-2'>
-                    <div className='grid grid-cols-2'>
-                      <p className='space-mono-bold text-[#5e7a7d] text-left'>Number of People ({peopleValue})</p>
-                      <p className={`space-mono-bold text-red-600 text-right ${peopleClass[0]}`}>Can't be zero</p>
-                    </div>
-                      <div>
-                        <Image src={Person} alt='Person Icon' className='absolute ml-2 mt-3'/>
-                        <input type='number' className={`bg-[#f4fafa] w-full h-10 text-right px-2 appearance-none space-mono-bold text-2xl text-[#00494d] focus:outline-[${peopleClass[1]}]`} min={0} max={100} placeholder='0' onChange={(e) => handlePeople(e)} required/>
+                      <div className='grid grid-cols-2'>
+                        <p className='space-mono-bold text-[#5e7a7d] text-left'>Number of People ({peopleValue})</p>
+                        <p className={`space-mono-bold text-red-600 text-right ${peopleClass[0]}`}>Can't be zero</p>
                       </div>
+                      <form onSubmit={handleSubmit}>
+                        <Image src={Person} alt='Person Icon' className='absolute ml-2 mt-3' />
+                        <input type='number' className={`bg-[#f4fafa] w-full h-10 text-right px-2 appearance-none space-mono-bold text-2xl text-[#00494d] focus:outline-[${peopleClass[1]}]`} min={0} max={10} placeholder='0' onChange={(e) => handlePeople(e)} required />
+                      </form>
                     </div>
                   </div>
                 </div>
