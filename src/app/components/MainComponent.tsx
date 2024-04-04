@@ -131,7 +131,7 @@ export default function MainComponent() {
                             </div>
                             <div className='bg-[#00494d] sm:w-[27rem] h-full rounded-xl text-white px-5 pb-5 pt-10 sm:p-10'>
                                 <div className='grid grid-rows-3 gap-12 sm:gap-4 h-full'>
-                                    <div className='flex flex-row'>
+                                    <div className='grid grid-flow-col'>
                                         <div className='text-left'>
                                             <p className='space-mono-bold'>Tip Amount</p>
                                             <p className='space-mono-regular text-[#7f9c9f]'>/ person</p>
@@ -140,7 +140,7 @@ export default function MainComponent() {
                                             <p className='text-right text-5xl space-mono-bold text-[#26c0ab]'>{tipAmount}</p>
                                         </div>
                                     </div>
-                                    <div className='flex flex-row'>
+                                    <div className='grid grid-flow-col'>
                                         <div className='text-left'>
                                             <p className='space-mono-bold'>Total</p>
                                             <p className='space-mono-regular text-[#7f9c9f]'>/ person</p>
