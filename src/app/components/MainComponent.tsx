@@ -94,36 +94,36 @@ export default function MainComponent() {
                                 <div className='max-sm:flex max-sm:flex-col max-sm:space-y-8 sm:grid sm:grid-rows-3 sm:gap-4 h-full'>
                                     <div className='flex flex-col space-y-2'>
                                         <div className='grid grid-cols-2'>
-                                            <p className='space-mono-bold text-[#5e7a7d] text-left'>Bill</p>
-                                            <p className={`space-mono-bold text-red-600 text-right ${billClass[0]}`}>{`Can't be zero`}</p>
+                                            <p className='font-bold text-[#5e7a7d] text-left'>Bill</p>
+                                            <p className={`font-bold text-red-600 text-right ${billClass[0]}`}>{`Can't be zero`}</p>
                                         </div>
                                         <form onSubmit={handleSubmit}>
                                             <Image src={Dollar} alt='Dollar Sign' className='absolute ml-2 mt-3' />
-                                            <input type='number' className={`bg-[#f4fafa] w-full h-10 text-right px-2 appearance-none space-mono-bold text-2xl text-[#00494d] focus:outline-[${billClass[1]}]`} placeholder='0' min={0} onChange={(e) => handleBills(e)} onKeyDown={(e) => ["e", "E", "+", "-"].includes(e.key) && e.preventDefault()} required />
+                                            <input type='number' className={`bg-[#f4fafa] w-full h-10 text-right px-2 appearance-none font-bold text-2xl text-[#00494d] focus:outline-[${billClass[1]}]`} placeholder='0' min={0} onChange={(e) => handleBills(e)} onKeyDown={(e) => ["e", "E", "+", "-"].includes(e.key) && e.preventDefault()} required />
                                         </form>
                                     </div>
                                     <div className='flex flex-col space-y-2'>
-                                        <p className='space-mono-bold text-[#5e7a7d]'>Select Tip %</p>
+                                        <p className='font-bold text-[#5e7a7d]'>Select Tip %</p>
                                         <div className='grid max-sm:grid-cols-2 max-sm:grid-rows-3 sm:grid-cols-3 sm:grid-rows-2 gap-4'>
-                                            <button className='bg-[#00494d] text-white space-mono-regular text-2xl h-14 rounded-md hover:text-[#00494d] hover:bg-[#26c0ab] active:bg-[#c5e4e7]' onClick={handleTipsClick}>5%</button>
-                                            <button className='bg-[#00494d] text-white space-mono-regular text-2xl h-14 rounded-md hover:text-[#00494d] hover:bg-[#26c0ab] active:bg-[#c5e4e7]' onClick={handleTipsClick}>10%</button>
-                                            <button className='bg-[#00494d] text-white space-mono-regular text-2xl h-14 rounded-md hover:text-[#00494d] hover:bg-[#26c0ab] active:bg-[#c5e4e7]' onClick={handleTipsClick}>15%</button>
-                                            <button className='bg-[#00494d] text-white space-mono-regular text-2xl h-14 rounded-md hover:text-[#00494d] hover:bg-[#26c0ab] active:bg-[#c5e4e7]' onClick={handleTipsClick}>25%</button>
-                                            <button className='bg-[#00494d] text-white space-mono-regular text-2xl h-14 rounded-md hover:text-[#00494d] hover:bg-[#26c0ab] active:bg-[#c5e4e7]' onClick={handleTipsClick}>50%</button>
+                                            <button className='bg-[#00494d] text-white text-2xl h-14 rounded-md hover:text-[#00494d] hover:bg-[#26c0ab] active:bg-[#c5e4e7]' onClick={handleTipsClick}>5%</button>
+                                            <button className='bg-[#00494d] text-white text-2xl h-14 rounded-md hover:text-[#00494d] hover:bg-[#26c0ab] active:bg-[#c5e4e7]' onClick={handleTipsClick}>10%</button>
+                                            <button className='bg-[#00494d] text-white text-2xl h-14 rounded-md hover:text-[#00494d] hover:bg-[#26c0ab] active:bg-[#c5e4e7]' onClick={handleTipsClick}>15%</button>
+                                            <button className='bg-[#00494d] text-white text-2xl h-14 rounded-md hover:text-[#00494d] hover:bg-[#26c0ab] active:bg-[#c5e4e7]' onClick={handleTipsClick}>25%</button>
+                                            <button className='bg-[#00494d] text-white text-2xl h-14 rounded-md hover:text-[#00494d] hover:bg-[#26c0ab] active:bg-[#c5e4e7]' onClick={handleTipsClick}>50%</button>
                                             <form onSubmit={handleSubmit}>
-                                                <input type='number' placeholder='Custom' className='w-full bg-[#f4fafa] text-right px-2 space-mono-bold text-[#00494d] text-2xl h-14 rounded-md placeholder-shown:text-center placeholder:text-[#5e7a7d] focus:outline-[#26c0ab]' min={0} max={100} onChange={(e) => handleTips(e)} onKeyDown={(e) => ["e", "E", "+", "-"].includes(e.key) && e.preventDefault()} />
+                                                <input type='number' placeholder='Custom' className='w-full bg-[#f4fafa] text-right px-2 font-bold text-[#00494d] text-2xl h-14 rounded-md placeholder-shown:text-center placeholder:text-[#5e7a7d] focus:outline-[#26c0ab]' min={0} max={100} onChange={(e) => handleTips(e)} onKeyDown={(e) => ["e", "E", "+", "-"].includes(e.key) && e.preventDefault()} />
                                             </form>
                                         </div>
                                     </div>
                                     <div className='flex items-end'>
                                         <div className='w-full flex flex-col space-y-2'>
                                             <div className='grid grid-cols-2'>
-                                                <p className='space-mono-bold text-[#5e7a7d] text-left'>Number of People</p>
-                                                <p className={`space-mono-bold text-red-600 text-right ${peopleClass[0]}`}>{`Can't be zero`}</p>
+                                                <p className='font-bold text-[#5e7a7d] text-left'>Number of People</p>
+                                                <p className={`font-bold text-red-600 text-right ${peopleClass[0]}`}>{`Can't be zero`}</p>
                                             </div>
                                             <form onSubmit={handleSubmit}>
                                                 <Image src={Person} alt='Person Icon' className='absolute ml-2 mt-3' />
-                                                <input type='number' className={`bg-[#f4fafa] w-full h-10 text-right px-2 appearance-none space-mono-bold text-2xl text-[#00494d] focus:outline-[${peopleClass[1]}]`} min={0} max={10} placeholder='0' onChange={(e) => handlePeople(e)} onKeyDown={(e) => ["e", "E", "+", "-"].includes(e.key) && e.preventDefault()} required />
+                                                <input type='number' className={`bg-[#f4fafa] w-full h-10 text-right px-2 appearance-none font-bold text-2xl text-[#00494d] focus:outline-[${peopleClass[1]}]`} min={0} max={10} placeholder='0' onChange={(e) => handlePeople(e)} onKeyDown={(e) => ["e", "E", "+", "-"].includes(e.key) && e.preventDefault()} required />
                                             </form>
                                         </div>
                                     </div>
@@ -133,24 +133,24 @@ export default function MainComponent() {
                                 <div className='grid grid-rows-3 gap-12 sm:gap-4 h-full'>
                                     <div className='grid grid-flow-col'>
                                         <div className='text-left'>
-                                            <p className='space-mono-bold'>Tip Amount</p>
-                                            <p className='space-mono-regular text-[#7f9c9f]'>/ person</p>
+                                            <p className='font-bold'>Tip Amount</p>
+                                            <p className='font-normal text-[#7f9c9f]'>/ person</p>
                                         </div>
                                         <div>
-                                            <p className='text-right text-5xl space-mono-bold text-[#26c0ab]'>{tipAmount}</p>
+                                            <p className='text-right text-5xl font-bold text-[#26c0ab]'>{tipAmount}</p>
                                         </div>
                                     </div>
                                     <div className='grid grid-flow-col'>
                                         <div className='text-left'>
-                                            <p className='space-mono-bold'>Total</p>
-                                            <p className='space-mono-regular text-[#7f9c9f]'>/ person</p>
+                                            <p className='font-bold'>Total</p>
+                                            <p className='font-normal text-[#7f9c9f]'>/ person</p>
                                         </div>
                                         <div>
-                                            <p className='text-right text-5xl space-mono-bold text-[#26c0ab]'>{total}</p>
+                                            <p className='text-right text-5xl font-bold text-[#26c0ab]'>{total}</p>
                                         </div>
                                     </div>
                                     <div className='flex items-end'>
-                                        <button className='bg-[#3f9d95] text-[#3a5b5f] w-full h-12 rounded-lg space-mono-bold text-2xl hover:bg-[#26c0ab] hover:text-[#00494d] active:bg-[#c5e4e7]' onClick={handleReset}>RESET</button>
+                                        <button className='bg-[#3f9d95] text-[#3a5b5f] w-full h-12 rounded-lg font-bold text-2xl hover:bg-[#26c0ab] hover:text-[#00494d] active:bg-[#c5e4e7]' onClick={handleReset}>RESET</button>
                                     </div>
                                 </div>
                             </div>
