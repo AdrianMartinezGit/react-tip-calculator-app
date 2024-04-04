@@ -99,7 +99,7 @@ export default function MainComponent() {
                                         </div>
                                         <form onSubmit={handleSubmit}>
                                             <Image src={Dollar} alt='Dollar Sign' className='absolute ml-2 mt-3' />
-                                            <input type='number' className={`bg-[#f4fafa] w-full h-10 text-right px-2 appearance-none space-mono-bold text-2xl text-[#00494d] focus:outline-[${billClass[1]}]`} placeholder='0' min={0} onChange={(e) => handleBills(e)} required />
+                                            <input type='number' className={`bg-[#f4fafa] w-full h-10 text-right px-2 appearance-none space-mono-bold text-2xl text-[#00494d] focus:outline-[${billClass[1]}]`} placeholder='0' min={0} onChange={(e) => handleBills(e)} onKeyDown={(e) => ["e", "E", "+", "-"].includes(e.key) && e.preventDefault()} required />
                                         </form>
                                     </div>
                                     <div className='flex flex-col space-y-2'>
@@ -111,7 +111,7 @@ export default function MainComponent() {
                                             <button className='bg-[#00494d] text-white space-mono-regular text-2xl h-14 rounded-md hover:text-[#00494d] hover:bg-[#26c0ab] active:bg-[#c5e4e7]' onClick={handleTipsClick}>25%</button>
                                             <button className='bg-[#00494d] text-white space-mono-regular text-2xl h-14 rounded-md hover:text-[#00494d] hover:bg-[#26c0ab] active:bg-[#c5e4e7]' onClick={handleTipsClick}>50%</button>
                                             <form onSubmit={handleSubmit}>
-                                                <input type='number' placeholder='Custom' className='w-full bg-[#f4fafa] text-right px-2 space-mono-bold text-[#00494d] text-2xl h-14 rounded-md placeholder-shown:text-center placeholder:text-[#5e7a7d] focus:outline-[#26c0ab]' min={0} max={100} onChange={(e) => handleTips(e)} />
+                                                <input type='number' placeholder='Custom' className='w-full bg-[#f4fafa] text-right px-2 space-mono-bold text-[#00494d] text-2xl h-14 rounded-md placeholder-shown:text-center placeholder:text-[#5e7a7d] focus:outline-[#26c0ab]' min={0} max={100} onChange={(e) => handleTips(e)} onKeyDown={(e) => ["e", "E", "+", "-"].includes(e.key) && e.preventDefault()} />
                                             </form>
                                         </div>
                                     </div>
@@ -123,7 +123,7 @@ export default function MainComponent() {
                                             </div>
                                             <form onSubmit={handleSubmit}>
                                                 <Image src={Person} alt='Person Icon' className='absolute ml-2 mt-3' />
-                                                <input type='number' className={`bg-[#f4fafa] w-full h-10 text-right px-2 appearance-none space-mono-bold text-2xl text-[#00494d] focus:outline-[${peopleClass[1]}]`} min={0} max={10} placeholder='0' onChange={(e) => handlePeople(e)} required />
+                                                <input type='number' className={`bg-[#f4fafa] w-full h-10 text-right px-2 appearance-none space-mono-bold text-2xl text-[#00494d] focus:outline-[${peopleClass[1]}]`} min={0} max={10} placeholder='0' onChange={(e) => handlePeople(e)} onKeyDown={(e) => ["e", "E", "+", "-"].includes(e.key) && e.preventDefault()} required />
                                             </form>
                                         </div>
                                     </div>
