@@ -94,8 +94,8 @@ export default function MainComponent() {
                                 <div className='max-sm:flex max-sm:flex-col max-sm:space-y-8 sm:grid sm:grid-rows-3 sm:gap-4 h-full'>
                                     <div className='flex flex-col space-y-2'>
                                         <div className='grid grid-cols-2'>
-                                            <p className='space-mono-bold text-[#5e7a7d] text-left'>Bill ({billValue})</p>
-                                            <p className={`space-mono-bold text-red-600 text-right ${billClass[0]}`}>Cant be zero</p>
+                                            <p className='space-mono-bold text-[#5e7a7d] text-left'>Bill</p>
+                                            <p className={`space-mono-bold text-red-600 text-right ${billClass[0]}`}>{`Can't be zero`}</p>
                                         </div>
                                         <form onSubmit={handleSubmit}>
                                             <Image src={Dollar} alt='Dollar Sign' className='absolute ml-2 mt-3' />
@@ -103,7 +103,7 @@ export default function MainComponent() {
                                         </form>
                                     </div>
                                     <div className='flex flex-col space-y-2'>
-                                        <p className='space-mono-bold text-[#5e7a7d]'>Select Tip % ({tipValue})</p>
+                                        <p className='space-mono-bold text-[#5e7a7d]'>Select Tip %</p>
                                         <div className='grid max-sm:grid-cols-2 max-sm:grid-rows-3 sm:grid-cols-3 sm:grid-rows-2 gap-4'>
                                             <button className='bg-[#00494d] text-white space-mono-regular text-2xl h-14 rounded-md hover:text-[#00494d] hover:bg-[#26c0ab] active:bg-[#c5e4e7]' onClick={handleTipsClick}>5%</button>
                                             <button className='bg-[#00494d] text-white space-mono-regular text-2xl h-14 rounded-md hover:text-[#00494d] hover:bg-[#26c0ab] active:bg-[#c5e4e7]' onClick={handleTipsClick}>10%</button>
@@ -118,8 +118,8 @@ export default function MainComponent() {
                                     <div className='flex items-end'>
                                         <div className='w-full flex flex-col space-y-2'>
                                             <div className='grid grid-cols-2'>
-                                                <p className='space-mono-bold text-[#5e7a7d] text-left'>Number of People ({peopleValue})</p>
-                                                <p className={`space-mono-bold text-red-600 text-right ${peopleClass[0]}`}>Cant be zero</p>
+                                                <p className='space-mono-bold text-[#5e7a7d] text-left'>Number of People</p>
+                                                <p className={`space-mono-bold text-red-600 text-right ${peopleClass[0]}`}>{`Can't be zero`}</p>
                                             </div>
                                             <form onSubmit={handleSubmit}>
                                                 <Image src={Person} alt='Person Icon' className='absolute ml-2 mt-3' />
