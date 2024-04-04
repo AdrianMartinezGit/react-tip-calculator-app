@@ -18,7 +18,7 @@ export default function Home() {
   const [peopleClass, setPeopleClass] = useState<string[]>(['hidden', '#26c0ab']);
 
   const handleBills = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newValue: number = Number(e.currentTarget.value);
+    const newValue: number = Number(e.currentTarget.value); 
 
     setBillClass(['hidden', '#26c0ab']);
 
@@ -27,11 +27,13 @@ export default function Home() {
     }
 
     setBillValue(newValue);
+    calculateTip();
   }
 
   const handleTips = (e: React.ChangeEvent<HTMLInputElement>) => {
     let newValue: number = Number(e.currentTarget.value);
-    setTipValue(newValue);
+    setTipValue(newValue / 100);
+    calculateTip();
   }
 
   const handlePeople = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -44,14 +46,17 @@ export default function Home() {
     }
 
     setPeopleValue(newValue);
+    calculateTip();
   }
 
-  const handleTipAmount = () => {
-
-  }
-
-  const handleTotalAmount = () => {
-
+  const calculateTip = () => {
+    if (peopleValue >= 1) {
+      let amount = (billValue * tipValue) / peopleValue;
+      let total = (billValue * amount) / peopleValue;
+      
+      setTipAmount('$' + amount.toFixed(2));
+      setTotal('$' + total.toFixed(2));
+    }
   }
 
   const handleReset = () => {
@@ -64,8 +69,8 @@ export default function Home() {
 
   const handleTipsClick = (e: any) => {
     const newValue: number = Number.parseInt(e.currentTarget.textContent);
-    setTipValue(newValue);
-
+    setTipValue(newValue / 100);
+    calculateTip();
   }
   
   return (
